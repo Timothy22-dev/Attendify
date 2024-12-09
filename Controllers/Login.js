@@ -1,4 +1,5 @@
-const bcrypt = require('bcrypt'); // For password comparison
+const bcrypt = require('bcryptjs'); // For password comparison
+const User = require('../Models/User'); // Ensure the correct path to your User model
 
 const Login = async (req, res) => {
     try {

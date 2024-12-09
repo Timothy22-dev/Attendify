@@ -3,13 +3,13 @@ const bcrypt = require('bcryptjs'); // For password hashing
 
 const Registration = async (req, res) => {
     // Destructure fields from the request body
-    const { firstName, surName, email, password, matriculationNumber, middleName } = req.body;
+    const { firstName, surName, email, password, matriculationNumber} = req.body;
 
     console.log(req.body);
 
     try {
         // Validate that all required fields are present
-        if (!firstName || !surName || !email || !password || !matriculationNumber) {
+        if (!firstName || !surName || !email) {
             return res.status(400).json({ message: "All fields are required." });
         }
 
@@ -17,11 +17,11 @@ const Registration = async (req, res) => {
         const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
         if (!passwordRegex.test(password)) {
             return res.status(400).json({
-                message: "Password must be at least 8 characters long and include at least one letter, one number, and one special character.",
+            message: "Password must be at least 8 characters long and include at least one letter, one number, and one special character",
             });
         }
 
-        // Matriculation number validation: Must contain only alphabets and numbers
+        // Matriculation numssber validation: Must contain only alphabets and numbers
         const matriculationRegex = /^[A-Za-z0-9]+$/;
         if (!matriculationRegex.test(matriculationNumber)) {
             return res.status(400).json({
@@ -45,7 +45,7 @@ const Registration = async (req, res) => {
             email,
             password: hashedPassword, // Store hashed password
             matriculationNumber,
-            middleName,
+        
         });
 
         // Save the new user to the database
