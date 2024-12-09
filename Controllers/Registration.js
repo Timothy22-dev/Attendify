@@ -1,4 +1,4 @@
-const User = require('../models/User'); // Ensure the correct path to your User model
+const User = require('../Models/User'); // Ensure the correct path to your User model
 const bcrypt = require('bcryptjs'); // For password hashing
 
 const Registration = async (req, res) => {
