@@ -3,7 +3,14 @@ const express = require("express");
 const http = require("http");
 const cors = require("cors");
 const path = require("path");
-const registerRoute = require('./Routes/AuthRoutes')
+
+// Import existing routes
+const registerRoute = require('./Routes/AuthRoutes');
+const courseRoutes = require('./Routes/CourseRoute');
+
+// Import attendance routes
+const attendanceRoutes = require('./Routes/AttendanceRoutes'); // Add this line
+
 const { PORT } = process.env;
 const app = express();
 const server = http.createServer(app);
@@ -17,6 +24,7 @@ app.use(
         credentials: true,
     })
 );
+
 // Serve static files
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/public/uploads", express.static(path.join("public", "upload")));
@@ -33,8 +41,14 @@ app.get("/", (req, res) => {
     res.send("<h1>Attendify</h1>");
 });
 
-app.use('/api/auth', registerRoute)
+// Add the course routes
+app.use('/api/courses', courseRoutes);
 
+// Add authentication routes
+app.use('/api/auth', registerRoute);
+
+// Add attendance routes
+app.use('/api/attendance', attendanceRoutes); // Add this line for attendance routes
 
 // Start the server
 const APP_PORT = PORT || 4000;
