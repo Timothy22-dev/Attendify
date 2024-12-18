@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
-// Import controllers
+// Import controllers - Ensure these are functions
 const Registration = require('../Controllers/Registration');  // Function
-const Login = require('../Controllers/Login');  // Function
-const { GetAllUsers, GetSingleUser } = require('../Controllers/UserController');  // Functions
+const Login = require('../Controllers/Login');               // Function
+const { GetAllUsers, GetSingleUser } = require('../Controllers/UserController'); // Functions
 
 // Route to register a new user
 router.post("/register", Registration);
