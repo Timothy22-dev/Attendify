@@ -53,8 +53,8 @@ const Registration = async (req, res) => {
 
         return res.status(201).json({ message: "Account created successfully." });
     } catch (error) {
-        console.error("Error during registration:", error);
-        return res.status(500).json({ message: "Internal server error." });
+        // console.error("Error during registration:", error);
+        // return res.status(500).json({ message: "Internal server error." });
     }
 };
 
