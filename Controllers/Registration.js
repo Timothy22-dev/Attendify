@@ -8,10 +8,10 @@ const Registration = async (req, res) => {
     console.log(req.body);
 
     try {
-        // Validate that all required fields are present
-        if (!firstName || !surName || !email) {
-            return res.status(400).json({ message: "All fields are required." });
-        }
+        // // Validate that all required fields are present
+        // if (!firstName || !surName || !email) {
+        //     return res.status(400).json({ message: "All fields are required." });
+        // }
 
         // Password validation: Must contain at least one letter, one number, and one special character
         // const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
