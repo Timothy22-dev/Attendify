@@ -7,9 +7,8 @@ const path = require("path");
 // Import existing routes
 const registerRoute = require('./Routes/AuthRoutes');
 const courseRoutes = require('./Routes/CourseRoute');
-
-// Import attendance routes
-const attendanceRoutes = require('./Routes/AttendanceRoutes'); // Add this line
+const attendanceRoutes = require('./Routes/AttendanceRoutes'); // Add this line for attendance routes
+const generateCodeRoutes = require('./Routes/GenerateCodeRoutes'); // Import the Generate Code routes
 
 const { PORT } = process.env;
 const app = express();
@@ -48,7 +47,10 @@ app.use('/api/courses', courseRoutes);
 app.use('/api/auth', registerRoute);
 
 // Add attendance routes
-app.use('/api/attendance', attendanceRoutes); // Add this line for attendance routes
+app.use('/api/attendance', attendanceRoutes);
+
+// Add generate code routes
+app.use('/api/generatecode', generateCodeRoutes); // Add this line
 
 // Start the server
 const APP_PORT = PORT || 4000;
